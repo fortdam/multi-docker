@@ -1,0 +1,20 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t tangzhiming/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true tangzhiming/react-test npm run test -- --coverage
+
+after_success:
+  - docker build -t tangzhiming/multi-client ./client
+  - docker build -t tangzhiming/multi-nginx ./nginx
+  - docker build -t tangzhiming/multi-server ./server
+  - docker build -t tangzhiming/multi-worker ./worker
+
+  # Login in to the docker CLI
+  
+
+  # Take those images and push them to docker hub
