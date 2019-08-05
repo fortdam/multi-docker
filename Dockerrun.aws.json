@@ -5,22 +5,19 @@
             "name": "client",
             "image": "tangzhiming/multi-client",
             "hostname": "client",
-            "essential": false,
-            "memory": 128
+            "essential": false
         },
         {
             "name": "server",
             "image": "tangzhiming/multi-server",
             "hostname": "api",
-            "essential": false,
-            "memory": 128
+            "essential": false
         },
         {
             "name": "worker",
             "image": "tangzhiming/multi-worker",
             "hostname": "worker",
-            "essential": false,
-            "memory": 128
+            "essential": false
         },
         {
             "name": "nginx",
@@ -32,8 +29,7 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["client", "server"],
-            "memory": 128
+            "links": ["client", "server"]
         }
     ]
 }
